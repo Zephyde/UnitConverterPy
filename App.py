@@ -17,13 +17,13 @@ st.caption("Darth Convertor says: 'I find your lack of metric... disturbing.'")
 with st.sidebar:
     st.header("Controls")
 
-    imp_to_met = st.toggle("Imperial → Metric", value=True)
+    imp_to_met = st.toggle("Metric → Imperial", value=True)
 
     show_detected = st.toggle("Show detected units (Debug)", value=False)
     show_conversions = st.toggle("Show conversions list", value=True)
     st.caption("If any units don't convert, it could be that they do not yet exist in my dictionary. Do let me know please :)")
 
-direction_label = "Imperial → Metric" if imp_to_met else "Metric → Imperial"
+direction_label = "Metric → Imperial" if imp_to_met else "Imperial → Metric"
 st.subheader(direction_label)
 
 text = st.text_area(
