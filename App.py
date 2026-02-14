@@ -29,7 +29,7 @@ st.subheader(direction_label)
 text = st.text_area(
     "Input text",
     height=220,
-    placeholder="Example: The car moves at 100 mi/hr and has an acceleration of 32 ft/s²\nConversion Example: The car moves at 44.7 m / s and has an acceleration of 32 m / s ** 2"
+    placeholder="Example: The car moves at 100 mi/hr and has an acceleration of 32 ft/s²\nConversion Example: The car moves at 44.7 m / s and has an acceleration of 9.75 m / s ** 2"
 )
 
 if st.button("Convert", type="primary"):
