@@ -19,7 +19,6 @@ with st.sidebar:
 
     imp_to_met = st.toggle("Imperial → Metric", value=True)
 
-    wrap = st.toggle("Force terminal-style wrapping", value=True)
     show_detected = st.toggle("Show detected units", value=False)
     show_conversions = st.toggle("Show conversions list", value=True)
 
@@ -52,8 +51,7 @@ if st.button("Convert", type="primary"):
 
                     output = extractAndReplaceUnits(text)
 
-                    if wrap:
-                        output = textwrap.fill(output, width=70)
+
 
                     st.subheader("🧪 Converted Text:")
                     st.code(output)
@@ -73,8 +71,7 @@ if st.button("Convert", type="primary"):
 
                     output = extractAndReplaceMetricUnits(text)
 
-                    if wrap:
-                        output = textwrap.fill(output, width=70)
+
 
                     st.subheader("🧪 Converted Text:")
                     st.code(output)
