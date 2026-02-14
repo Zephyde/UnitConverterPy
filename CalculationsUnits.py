@@ -207,9 +207,8 @@ def extractAndReplaceMetricUnits(text):
 
 
 def ConvertImpToMetSeparate(units_dict):
-    outputDict = {}
+    lines = []
 
-    print("\n🧪 Conversions: ")
     for unit, values in units_dict.items():
         for value in values:
             try:
@@ -220,18 +219,17 @@ def ConvertImpToMetSeparate(units_dict):
                 converted = quantity.to(target)
 
                 metric_value = round(converted.magnitude, 4)
-                metric_unit = str(converted.units)
+                metric_unit = f"{converted.units:~}"  # nice abbreviations
+                lines.append(f"{value} {unit} → {metric_value} {metric_unit}")
 
-                outputDict[metric_unit] = metric_value
-                print(f"{value} {unit} → {metric_value} {metric_unit}")
+            except (UndefinedUnitError, DimensionalityError, ValueError, AttributeError):
+                lines.append(f"⚠️ Unrecognized unit: {unit}")
 
-            except (UndefinedUnitError, DimensionalityError, ValueError, AttributeError) as e:
-                print(f"⚠️ Unrecognized unit: {unit}")
-
-    return outputDict
+    return lines
 
 def ConvertMetToImpSeparate(units_dict):
-    outputdict = {}
+    lines = []
+
     for unit, values in units_dict.items():
         for value in values:
             try:
@@ -240,17 +238,16 @@ def ConvertMetToImpSeparate(units_dict):
 
                 quantity = ureg.Quantity(value, pint_unit)
                 converted = quantity.to(target)
-                imperial_value = round(converted.magnitude, 4)
-                imperial_unit = str(converted.units)
-                outputdict[imperial_unit] = imperial_value
 
-                print(f"{value} {unit} → {imperial_value} {imperial_unit}")
+                imp_value = round(converted.magnitude, 4)
+                imp_unit = f"{converted.units:~}"
+                lines.append(f"{value} {unit} → {imp_value} {imp_unit}")
 
-            except (UndefinedUnitError, DimensionalityError, ValueError, AttributeError) as e:
-                print(f"⚠️ Unrecognized unit: {unit}")
+            except (UndefinedUnitError, DimensionalityError, ValueError, AttributeError):
+                lines.append(f"⚠️ Unrecognized unit: {unit}")
 
+    return lines
 
-    return outputdict
 
 
 

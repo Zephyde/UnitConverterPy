@@ -40,9 +40,8 @@ if st.button("Convert"):
                     st.error("No imperial units detected.")
                 else:
                     conversions = ConvertImpToMetSeparate(detected)
-                    st.subheader("🧪 Conversions: ")
-                    for line in conversions:
-                        st.write(line)
+                    st.subheader("🧪 Conversions:")
+                    st.code("\n".join(conversions))
 
                     output = extractAndReplaceUnits(text)
 
@@ -57,10 +56,9 @@ if st.button("Convert"):
                 if not detected:
                     st.error("No metric units detected.")
                 else:
-                    st.subheader("🧪 Conversions: ")
                     conversions = ConvertMetToImpSeparate(detected)
-                    for line in conversions:
-                        st.write(line)
+                    st.subheader("🧪 Conversions:")
+                    st.code("\n".join(conversions))
                     output = extractAndReplaceMetricUnits(text)
 
                     if wrap:
