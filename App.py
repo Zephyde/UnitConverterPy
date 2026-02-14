@@ -19,7 +19,7 @@ with st.sidebar:
 
     imp_to_met = st.toggle("Imperial → Metric", value=True)
 
-    wrap = st.toggle("Wrap output to 70 chars", value=True)
+    wrap = st.toggle("Force terminal-style wrapping", value=True)
     show_detected = st.toggle("Show detected units", value=False)
     show_conversions = st.toggle("Show conversions list", value=True)
 
