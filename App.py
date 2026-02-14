@@ -21,7 +21,7 @@ with st.sidebar:
 
     show_detected = st.toggle("Show detected units", value=False)
     show_conversions = st.toggle("Show conversions list", value=False)
-    st.caption("If any units don't convert, it could be that they do not yet exist in my dictionairy. Do let me know please :)")
+    st.caption("If any units don't convert, it could be that they do not yet exist in my dictionary. Do let me know please :)")
 
 direction_label = "Imperial → Metric" if imp_to_met else "Metric → Imperial"
 st.subheader(direction_label)
@@ -29,7 +29,7 @@ st.subheader(direction_label)
 text = st.text_area(
     "Input text",
     height=220,
-    placeholder="Example: The car moves at 100 mi/hr and has an acceleration of 32 ft/s^2\n Conversion Example: The car moves at 44.7 m / s and has an acceleration of 32 ft/s^2"
+    placeholder="Example: The car moves at 100 mi/hr and has an acceleration of 32 ft/s²\nConversion Example: The car moves at 44.7 m / s and has an acceleration of 32 m / s ** 2"
 )
 
 if st.button("Convert", type="primary"):
