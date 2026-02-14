@@ -6,10 +6,12 @@ from CalculationsUnits import (
     extractAndReplaceUnits,
     extractUnitsFromAnswer,
     extractUnitsFromText,
+    ConvertMetToImpSeparate,
+    ConvertImpToMetSeparate
 )
 
 st.set_page_config(page_title="UnitConverterPy", layout="centered")
-st.title("=== Episode V: The Metric Strikes Back ===")
+st.title("Episode V: The Metric Strikes Back")
 st.caption("Paste your text here")
 st.write("Darth Convertor says: 'I find your lack of metric... disturbing.'")
 
@@ -37,13 +39,17 @@ if st.button("Convert"):
                 if not detected:
                     st.error("No imperial units detected.")
                 else:
-                    st.write("🧪 Detected units:", detected)
+                    conversions = ConvertImpToMetSeparate(detected)
+                    st.subheader("🧪 Conversions: ")
+                    for line in conversions:
+                        st.write(line)
+
                     output = extractAndReplaceUnits(text)
 
                     if wrap:
                         output = textwrap.fill(output, width=70)
 
-                    st.subheader("Converted Text")
+                    st.subheader("\n🧪 Converted Text:")
                     st.code(output)
 
             else:  # Metric -> Imperial
@@ -51,7 +57,10 @@ if st.button("Convert"):
                 if not detected:
                     st.error("No metric units detected.")
                 else:
-                    st.write("🧪 Detected units:", detected)
+                    st.subheader("🧪 Conversions: ")
+                    conversions = ConvertMetToImpSeparate(detected)
+                    for line in conversions:
+                        st.write(line)
                     output = extractAndReplaceMetricUnits(text)
 
                     if wrap:

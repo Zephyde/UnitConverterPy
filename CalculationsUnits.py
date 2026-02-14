@@ -230,6 +230,29 @@ def ConvertImpToMetSeparate(units_dict):
 
     return outputDict
 
+def ConvertMetToImpSeparate(units_dict):
+    outputdict = {}
+    for unit, values in units_dict.items():
+        for value in values:
+            try:
+                pint_unit = normalize_unit_string(unit)
+                target = get_imperial_target(pint_unit)
+
+                quantity = ureg.Quantity(value, pint_unit)
+                converted = quantity.to(target)
+                imperial_value = round(converted.magnitude, 4)
+                imperial_unit = str(converted.units)
+                outputdict[imperial_unit] = imperial_value
+
+                print(f"{value} {unit} → {imperial_value} {imperial_unit}")
+
+            except (UndefinedUnitError, DimensionalityError, ValueError, AttributeError) as e:
+                print(f"⚠️ Unrecognized unit: {unit}")
+
+
+    return outputdict
+
+
 
 def extractUnitsFromText(text):
     imperial_pattern = r'(?P<value>\d{1,3}(?:,\d{3})*(?:\.\d+)?|\d+\.?\d*)[-\s]*?(?P<unit>(?:rad\s*[/∕]\s*s|mi\s*[/∕]\s*hr|mph|ft[/∕]sec²|ft[/∕]s²|ft[/∕]s2|ft[/∕]sec|ft[/∕]s|lb[/∕]ft|in(?:ches)?\.?|ft\.?|feet|pounds?|lb|slug(?:s)?|hp|gal)\b)'
