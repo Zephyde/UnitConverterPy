@@ -12,14 +12,15 @@ from CalculationsUnits import (
 
 st.set_page_config(page_title="UnitConverterPy", layout="centered")
 st.title("Episode V: The Metric Strikes Back")
-st.caption("Paste your text here")
 st.write("Darth Convertor says: 'I find your lack of metric... disturbing.'")
 
-direction = st.radio(
-    "Convert Direction",
-    ["Imperial -> Metric", "Metric -> Imperial"],
-    horizontal=True
-)
+with st.sidebar:
+    st.header("Controls")
+    direction = st.radio("Convert direction", ["Imperial → Metric", "Metric → Imperial"])
+    wrap = st.toggle("Wrap output", value=True)
+    show_detected = st.toggle("Show detected units", value=False)
+    show_conversions = st.toggle("Show conversions list", value=True)
+
 
 text = st.text_area(
     "Input text",
