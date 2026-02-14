@@ -22,7 +22,7 @@ def normalize_unit_string(unit_str):
         'lb': 'pound', 'lbs': 'pound', 'pounds': 'pound',
         'slug': 'slug', 'slugs': 'slug',
         'ft/s': 'foot/second', 'ft/sec': 'foot/second',
-        'ft/s²': 'foot/second**2', 'ft/s2': 'foot/second**2',
+        'ft/s²': 'foot/second**2', 'ft/s2': 'foot/second**2', "ft/s^2": "foot/second**2",
         'ft/sec²': 'foot/second**2', 'ft/sec2': 'foot/second**2',
         'mi/hr': 'mile/hour', 'mph': 'mile/hour',
         'lb/ft': 'pound_force/foot',
