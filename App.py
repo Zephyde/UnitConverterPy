@@ -20,7 +20,7 @@ with st.sidebar:
     imp_to_met = st.toggle("Imperial → Metric", value=True)
 
     show_detected = st.toggle("Show detected units", value=False)
-    show_conversions = st.toggle("Show conversions list", value=True)
+    show_conversions = st.toggle("Show conversions list", value=False)
 
 direction_label = "Imperial → Metric" if imp_to_met else "Metric → Imperial"
 st.subheader(direction_label)
@@ -52,7 +52,6 @@ if st.button("Convert", type="primary"):
                     output = extractAndReplaceUnits(text)
 
 
-
                     st.subheader("🧪 Converted Text:")
                     st.code(output)
 
@@ -70,7 +69,6 @@ if st.button("Convert", type="primary"):
                         st.code("\n".join(conversions))
 
                     output = extractAndReplaceMetricUnits(text)
-
 
 
                     st.subheader("🧪 Converted Text:")
