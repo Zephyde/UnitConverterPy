@@ -16,10 +16,15 @@ st.write("Darth Convertor says: 'I find your lack of metric... disturbing.'")
 
 with st.sidebar:
     st.header("Controls")
-    direction = st.radio("Convert direction", ["Imperial → Metric", "Metric → Imperial"])
-    wrap = st.toggle("Wrap output", value=True)
+
+    imp_to_met = st.toggle("Imperial → Metric", value=True)
+
+    wrap = st.toggle("Wrap output to 70 chars", value=True)
     show_detected = st.toggle("Show detected units", value=False)
     show_conversions = st.toggle("Show conversions list", value=True)
+
+direction_label = "Imperial → Metric" if imp_to_met else "Metric → Imperial"
+st.subheader(direction_label)
 
 
 text = st.text_area(
