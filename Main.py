@@ -1,7 +1,6 @@
 from CalculationsUnits import extractAndReplaceMetricUnits, extractAndReplaceUnits, extractUnitsFromAnswer, extractUnitsFromText
 import textwrap
 
-
 while True:
     print("\nInput your paragraph here and end with an empty line: \n")
     lines = []
