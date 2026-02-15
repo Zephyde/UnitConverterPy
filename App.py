@@ -11,7 +11,7 @@ from CalculationsUnits import (
 )
 
 st.set_page_config(page_title="UnitConverterPy", layout="centered")
-st.title("Episode V: The Metric Strikes Back")
+st.title("The Metric Strikes Back")
 st.caption("Darth Convertor says: 'I find your lack of metric... disturbing.'")
 
 with st.sidebar:
