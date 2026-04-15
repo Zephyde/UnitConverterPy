@@ -1,0 +1,156 @@
+# ── Imperial ──────────────────────────────────────────────
+[ft]
+aliases   = ["ft", "feet", "ft."]
+pint      = "foot"
+direction = "imperial"
+metric_target = "meter"
+pattern   = 'ft\.?|feet'
+
+[inch]
+aliases   = ["in", "in.", "inches"]
+pint      = "inch"
+direction = "imperial"
+metric_target = "meter"
+pattern   = 'in(?:ches)?\.?'
+
+[lb]
+aliases   = ["lb", "lbs", "pounds", "pound"]
+pint      = "pound"
+direction = "imperial"
+metric_target = "kilogram"
+pattern   = 'pounds?|lb'
+
+[slug]
+aliases   = ["slug", "slugs"]
+pint      = "slug"
+direction = "imperial"
+metric_target = "kilogram"
+pattern   = 'slug(?:s)?'
+
+[ft_s]
+aliases   = ["ft/s", "ft/sec"]
+pint      = "foot/second"
+direction = "imperial"
+metric_target = "meter/second"
+pattern   = 'ft\s*[/∕]\s*sec|ft\s*[/∕]\s*s'
+
+[ft_s2]
+aliases   = ["ft/s²", "ft/s2", "ft/sec²", "ft/sec2", "ft/s^2"]
+pint      = "foot/second**2"
+direction = "imperial"
+metric_target = "meter/second**2"
+pattern   = 'ft\s*[/∕]\s*sec[²2]|ft\s*[/∕]\s*s[²2^2]'
+
+[mi_hr]
+aliases   = ["mi/hr", "mph"]
+pint      = "mile/hour"
+direction = "imperial"
+metric_target = "meter/second"
+pattern   = 'mi\s*[/∕]\s*hr|mph'
+
+[lb_ft]
+aliases   = ["lb/ft"]
+pint      = "pound_force/foot"
+direction = "imperial"
+metric_target = "newton/meter"
+pattern   = 'lb\s*[/∕]\s*ft'
+
+[hp]
+aliases   = ["hp"]
+pint      = "horsepower"
+direction = "imperial"
+metric_target = "watt"
+pattern   = 'hp'
+
+[gal]
+aliases   = ["gal"]
+pint      = "gal"
+direction = "imperial"
+metric_target = "meter/second**2"
+pattern   = 'gal'
+
+# ── Metric ────────────────────────────────────────────────
+[meter]
+aliases   = ["m", "m.", "meters", "metres", "metre"]
+pint      = "meter"
+direction = "metric"
+imperial_target = "foot"
+pattern   = 'm\.?|meters?|metres?|metre'
+
+[centimeter]
+aliases   = ["cm", "cm."]
+pint      = "centimeter"
+direction = "metric"
+imperial_target = "inch"
+pattern   = 'cm\.?'
+
+[millimeter]
+aliases   = ["mm", "mm."]
+pint      = "millimeter"
+direction = "metric"
+imperial_target = "inch"
+pattern   = 'mm\.?'
+
+[kilogram]
+aliases   = ["kg", "kg.", "kgs", "kilogram", "kilograms"]
+pint      = "kilogram"
+direction = "metric"
+imperial_target = "pound"
+pattern   = 'kg\.?|kilograms?|kilogram'
+
+[m_s]
+aliases   = ["m/s", "m/sec"]
+pint      = "meter/second"
+direction = "metric"
+imperial_target = "foot/second"
+pattern   = 'm\s*[/∕]\s*sec|m\s*[/∕]\s*s'
+
+[m_s2]
+aliases   = ["m/s²", "m/s2", "m/sec²", "m/sec2"]
+pint      = "meter/second**2"
+direction = "metric"
+imperial_target = "foot/second**2"
+pattern   = 'm\s*[/∕]\s*sec[²2]|m\s*[/∕]\s*s[²2]'
+
+[km_h]
+aliases   = ["km/h", "km/hr"]
+pint      = "kilometer/hour"
+direction = "metric"
+imperial_target = "mile/hour"
+pattern   = 'km\s*[/∕]\s*hr|km\s*[/∕]\s*h'
+
+[newton]
+aliases   = ["n", "newtons", "newton"]
+pint      = "newton"
+direction = "metric"
+imperial_target = "pound_force"
+pattern   = 'newtons?|newton'
+
+[newton_m]
+aliases   = ["n/m", "n·m", "n-m"]
+pint      = "newton/meter"
+direction = "metric"
+imperial_target = "pound_force/foot"
+pattern   = 'n\s*[/∕·\-]\s*m'
+
+[watt]
+aliases   = ["w", "watt", "watts"]
+pint      = "watt"
+direction = "metric"
+imperial_target = "horsepower"
+pattern   = 'watts?|watt'
+
+[kilowatt]
+aliases   = ["kw", "kilowatt", "kilowatts"]
+pint      = "kilowatt"
+direction = "metric"
+imperial_target = "horsepower"
+pattern   = 'kilowatts?|kilowatt'
+
+[rad_s]
+aliases   = ["rad/s"]
+pint      = "radian/second"
+direction = "both"
+metric_target   = "radian/second"
+imperial_target = "radian/second"
+pattern   = 'rad\s*[/∕]\s*s'
