@@ -176,13 +176,6 @@ metric_target   = "radian/second"
 imperial_target = "radian/second"
 pattern   = 'rad\s*[/∕]\s*s'
 
-[psi]
-aliases   = ["psi", "lb/in²", "pounds per square inch"]
-pint      = "psi"
-direction = "imperial"
-metric_target = "pascal"
-pattern   = 'psi|lb\s*[/∕]\s*in[²2]'
-
 [pascal]
 aliases   = ["pa", "pascal", "n/m²"]
 pint      = "pascal"
