@@ -41,9 +41,9 @@ def get_imperial_target(pint_unit: str) -> str:
 def _convert(value: float, pint_unit: str, target_unit: str) -> str | None:
     """Core conversion — returns formatted string or None on failure."""
     try:
-        quantity  = ureg.Quantity(value, pint_unit)
+        quantity = ureg.Quantity(value, pint_unit)
         converted = quantity.to(target_unit)
-        mag       = converted.magnitude
+        mag = converted.magnitude
 
         formatted = str(int(mag)) if mag == int(mag) else f"{mag:.2f}".rstrip('0').rstrip('.')
         return f"{formatted} {converted.units:~}"
@@ -68,18 +68,18 @@ def _replace_units(text: str, aliases: set, get_target, clean_fn=None) -> str:
 
     def replace_func(match):
         value_str = match.group('value')
-        unit_raw  = match.group('unit').strip().lower()
-        unit_raw  = re.sub(r'[-\s,;.]+$', '', unit_raw)
+        unit_raw = match.group('unit').strip().lower()
+        unit_raw = re.sub(r'[-\s,;.]+$', '', unit_raw)
         unit_clean = re.sub(r'\s*[∕/·\-]\s*', '/', unit_raw).replace('.', '').replace('-', '')
 
         if unit_clean not in aliases:
             return match.group(0)
 
         try:
-            value     = float(normalize_number(value_str))
+            value = float(normalize_number(value_str))
             pint_unit = normalize_unit_string(unit_clean)
-            target    = get_target(pint_unit)
-            result    = _convert(value, pint_unit, target)
+            target = get_target(pint_unit)
+            result = _convert(value, pint_unit, target)
             return result + ' ' if result else match.group(0)
         except Exception:
             return match.group(0)
@@ -100,9 +100,9 @@ def _extract_units(text: str, pattern_fragment: str, aliases: set) -> dict:
     units_dict = defaultdict(list)
 
     for match in re.finditer(pattern, text):
-        value_str  = match.group('value')
-        unit       = match.group('unit').strip().lower()
-        unit       = re.sub(r'\s*[∕/]\s*', '/', unit)
+        value_str = match.group('value')
+        unit = match.group('unit').strip().lower()
+        unit = re.sub(r'\s*[∕/]\s*', '/', unit)
         unit_clean = re.sub(r'[-\s,;.]+$', '', unit).replace('.', '')
 
         if unit_clean not in aliases:
@@ -127,7 +127,7 @@ def _convert_dict(units_dict: dict, get_target) -> list[str]:
     lines = []
     for unit, values in units_dict.items():
         pint_unit = normalize_unit_string(unit)
-        target    = get_target(pint_unit)
+        target = get_target(pint_unit)
         for value in values:
             result = _convert(value, pint_unit, target)
             lines.append(f"{value} {unit} → {result}" if result else f"⚠️ Unrecognized unit: {unit}")
