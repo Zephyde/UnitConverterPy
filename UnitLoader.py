@@ -7,19 +7,6 @@ def load_units() -> dict:
     with open(core_path, "rb") as f:
         units = tomllib.load(f)
 
-    user_path = Path(__file__).parent / "user_units.toml"
-    if user_path.exists():
-        with open(user_path, "rb") as f:
-            user_units = tomllib.load(f)
-
-        conflicts = set(user_units) & set(units)
-        if conflicts:
-            print(f"⚠️  Ignoring user units that conflict with core units: {conflicts}")
-            user_units = {k: v for k, v in user_units.items() if k not in units}
-
-        units.update(user_units)
-        print(f"✅  Loaded {len(user_units)} user unit(s) from user_units.toml")
-
     return units
 
 
